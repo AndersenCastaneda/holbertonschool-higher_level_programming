@@ -1,5 +1,10 @@
 #include "lists.h"
 
+/**
+ * check_cycle - check if there is a cycle in a linked list
+ * @head: pointer to list to chekc
+ * Return: 1 if found a cycle, 0 otherwise
+ */
 int check_cycle(listint_t *list)
 {
 	listint_t *current = list, *nextOne = list;
