@@ -25,9 +25,9 @@ int is_palindrome(listint_t **head)
 		h = h->next;
 	}
 
-	for (i = 0; i < j / 2; i++)
+	for (i = 0; i < j; i++, j--)
 	{
-		if (nums[i] != nums[j - 1 - i])
+		if (nums[i] != nums[j - 1])
 		{
 			free(nums);
 			return (0);
