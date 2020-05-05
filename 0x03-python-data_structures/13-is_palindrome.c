@@ -16,10 +16,10 @@ int is_palindrome(listint_t **head)
 	for (j = 0; h->next; j++)
 		h = h->next;
 
-	h = *head;
 	k = malloc(sizeof(int) * j);
+	h = *head;
 
-	for (i = 0; h->next; i++)
+	for (i = 0; h; i++)
 	{
 		k[i] = h->n;
 		h = h->next;
@@ -34,5 +34,6 @@ int is_palindrome(listint_t **head)
 		}
 	}
 
+	free(k);
 	return (1);
 }
