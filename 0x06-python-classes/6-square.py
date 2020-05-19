@@ -5,7 +5,7 @@
 class Square:
     """A Class used to represent an Square"""
 
-    def __init__(self, size=0, position=(0,0)):
+    def __init__(self, size=0, position=(0, 0)):
         """
         Initialize Data.
 
@@ -48,7 +48,7 @@ class Square:
         Raises:
             TypeError: position must be a tuple of 2 positive integers
         """
-        if type(value) != tuple(int):
+        if type(value) != tuple(int, int):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
