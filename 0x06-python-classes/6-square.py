@@ -11,6 +11,7 @@ class Square:
 
         Argument:
             size: Size of a side of the square
+            position: Position of th square
         """
         self.__size = size
         self.__position = position
@@ -46,9 +47,11 @@ class Square:
         Sets the position.
 
         Raises:
-            TypeError: position must be a tuple of 2 positive integers
+            TypeError: If value is not a tuple of 2 integers
         """
-        if not isinstance(value, tuple) or len(value) != 2:
+        if type(value) != tuple or len(value) != 2 or\
+            type(value[0) != int or type(value[1]) != int\
+            value[0] < 0 or value[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
