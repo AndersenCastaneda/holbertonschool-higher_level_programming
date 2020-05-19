@@ -60,9 +60,14 @@ class Square:
         """Prints the square using '#'
         prints the position using' '
         """
-        pos = self.__position[0]
         if self.__size == 0:
             print()
+            return
+
+        for s in range(self.__position[1]):
+            print()
+
+        pos = self.__position[0]
         for i in range(self.__size):
             for j in range(pos):
                 print(" ", end="")
