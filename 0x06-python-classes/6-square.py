@@ -17,8 +17,8 @@ class Square:
 
     def __init__(self, size=0, position=(0, 0)):
         """Initialize Data"""
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
