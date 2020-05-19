@@ -61,7 +61,6 @@ class Square:
         prints the position using' '
         """
         pos = self.__position[0]
-        print(pos)
         if self.__size == 0:
             print()
         for i in range(self.__size):
@@ -70,4 +69,3 @@ class Square:
             for k in range(self.__size):
                 print("#", end="")
             print()
-
