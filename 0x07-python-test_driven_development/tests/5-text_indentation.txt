@@ -1,0 +1,38 @@
+The ``5-text_indentation`` module
+============================
+
+Using ``text_indentation``
+---------------------
+
+Function import:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Now use it:
+    >>> text_indentation(35)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation(["hello, world!"])
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation("Hello? World")
+    Hello?
+    <BLANKLINE>
+    World
+
+    >>> text_indentation("Hello.     From python")
+    Hello.
+    <BLANKLINE>
+    From python
+
+    >>> text_indentation(". Hello,  :   wold ?      From python")
+    .
+    <BLANKLINE>
+    Hello,:
+    <BLANKLINE>
+    wold?
+    <BLANKLINE>
+    From python
