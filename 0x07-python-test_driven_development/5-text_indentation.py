@@ -15,6 +15,3 @@ def text_indentation(text):
     for c in ".?:":
         text = (c + "\n\n").join([line.strip(" ") for line in text.split(c)])
     print(text)
-
-if __name__ == "__main__":
-    text_indentation(". Hello,  :   wold ?      From python")
