@@ -9,7 +9,7 @@ class Rectangle:
         Property def width(self): Returns width
         Property setter def width(self, value): Sets width = value
     Private instance attribute: height:
-        Property def height(self): Return heigth
+        Property def height(self): Return height
         Property setter def height(self, value): Sets height = value
     Public class attribute:
         number_of_instances
@@ -63,12 +63,12 @@ class Rectangle:
 
     @property
     def height(self):
-        """Returns heigth"""
-        return self.__heigth
+        """Returns height"""
+        return self.__height
 
     @height.setter
     def height(self, value):
-        """Sets heigth"""
+        """Sets height"""
         if type(value) != int:
             raise TypeError("height must be an integer")
         if value < 0:
