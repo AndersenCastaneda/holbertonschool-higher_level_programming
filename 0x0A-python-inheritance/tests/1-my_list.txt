@@ -41,3 +41,16 @@ Now test it:
 
     >>> my_list
     [9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+    >>> my_list = MyList("hello")
+
+    >>> my_list
+    ['h', 'e', 'l', 'l', 'o']
+
+    >>> my_list.print_sorted()
+    ['e', 'h', 'l', 'l', 'o']
+
+    >>> new_l = MyList()
+
+    >>> new_l.print_sorted()
+    []
