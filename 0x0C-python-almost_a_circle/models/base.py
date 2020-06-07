@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Base Module """
+import json
 
 
 class Base:
@@ -13,8 +14,9 @@ class Base:
 
     def __init__(self, id=None):
         """Constructor
-        Parameters:
-            id
+        Parameters: id
+        Raises:
+            TypeError: id must be an integer
         """
         if id is not None and type(id) != int:
             raise TypeError("id must be an integer")
@@ -23,3 +25,7 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        pass
