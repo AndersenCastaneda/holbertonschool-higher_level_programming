@@ -144,6 +144,6 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """Returns the dictionary representation of the object"""
-        d = {"id": self.id, "width": self.__width,
-             "height": self.__height, "x": self.__x, "y": self.__y}
+        d = {"id": self.id, "width": self.__width, "height": self.__height,
+             "x": self.__x, "y": self.__y}
         return d
