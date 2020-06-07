@@ -21,7 +21,7 @@ class Rectangle(Base):
     def __str__(self):
         """Object representation as string"""
         rep = "[Rectangle] ({}) {}/{} - {}/{}".format(
-            self.id, self.__x, self.__y, self.__width, self.__height)
+            self.id, self.x, self.y, self.width, self.height)
         return rep
 
     @property
@@ -98,14 +98,14 @@ class Rectangle(Base):
 
     def area(self):
         """Returns area"""
-        return self.__width * self.__height
+        return self.width * self.height
 
     def display(self):
         """prints in stdout the Rectangle instance with the character #"""
-        print("".join("\n" for i in range(self.__y)), end="")
-        for i in range(self.__height):
-            print("".join(" " for i in range(self.__x)), end="")
-            print("".join("#" for i in range(self.__width)), end="")
+        print("".join("\n" for i in range(self.y)), end="")
+        for i in range(self.height):
+            print("".join(" " for i in range(self.x)), end="")
+            print("".join("#" for i in range(self.width)), end="")
             print()
 
     def update(self, *args, **kwargs):
@@ -144,6 +144,6 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """Returns the dictionary representation of the object"""
-        d = {"id": self.id, "width": self.__width, "height": self.__height,
-             "x": self.__x, "y": self.__y}
+        d = {"id": self.id, "width": self.width, "height": self.height,
+             "x": self.x, "y": self.y}
         return d
