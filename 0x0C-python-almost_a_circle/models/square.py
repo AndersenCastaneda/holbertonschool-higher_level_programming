@@ -7,14 +7,16 @@ class Square(Rectangle):
     """Square Class"""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """Constructor"""
+        """Constructor
+        Parameters: self, size, x, y, id
+        """
         self.size = size
         super().__init__(self.size, self.size, x, y, id)
 
     def __str__(self):
         """Object representation as string"""
         rep = "[Square] ({}) {}/{} - {}".format(
-            self.id, self.x, self.y, self.__width)
+            self.id, self.__x, self.__y, self.__width)
         return rep
 
     @property
@@ -37,7 +39,7 @@ class Square(Rectangle):
         self.__height = value
 
     def update(self, *args, **kwargs):
-        """Update Class info
+        """Update Object info
         Parameters:
             *args: (id, size, x, y) respetivaly.
             **kwargs: {"id": , "size": , "x": , "y": }

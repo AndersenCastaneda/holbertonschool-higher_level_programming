@@ -21,7 +21,7 @@ class Rectangle(Base):
     def __str__(self):
         """Object representation as string"""
         rep = "[Rectangle] ({}) {}/{} - {}/{}".format(
-            self.id, self.x, self.y, self.width, self.height)
+            self.id, self.__x, self.__y, self.__width, self.__height)
         return rep
 
     @property
@@ -109,7 +109,7 @@ class Rectangle(Base):
             print()
 
     def update(self, *args, **kwargs):
-        """Update Class info
+        """Update Object info
         Parameters:
             *args: (id, width, height, x, y) respetivaly.
             **kwargs: {"id": , "width": , "height": , "x": , "y": }
@@ -141,3 +141,9 @@ class Rectangle(Base):
                     self.x = value
                 elif key == "y":
                     self.y = value
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of the object"""
+        d = {"id": self.id, "width": self.__width,
+             "height": self.__height, "x": self.__x, "y": self.__y}
+        return d
