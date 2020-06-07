@@ -16,6 +16,8 @@ class Base:
         Parameters:
             id
         """
+        if id is not None and type(id) != int:
+            raise TypeError("id must be an integer")
         if id is not None:
             self.id = id
         else:

@@ -12,13 +12,14 @@ class Rectangle(Base):
         """Constructor
         Parameters: self, width, heigth, x, y, id
         """
-        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     def __str__(self):
+        """Object representation as string"""
         rep = "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.x, self.y, self.width, self.height)
         return rep
@@ -115,7 +116,9 @@ class Rectangle(Base):
         """
         if len(args) != 0:
             if len(args) >= 1:
-                super().__init__(args[0])
+                if args[0] is not None and type(args[0]) != int:
+                    raise TypeError("id must be an integer")
+                self.id = args[0]
             if len(args) >= 2:
                 self.width = args[1]
             if len(args) >= 3:
@@ -127,7 +130,9 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 if key == "id":
-                    super().__init__(value)
+                    if value is not None and type(value) != int:
+                        raise TypeError("id must be an integer")
+                    self.id = value
                 elif key == "width":
                     self.width = value
                 elif key == "height":
