@@ -114,33 +114,13 @@ class Rectangle(Base):
             *args: (id, width, height, x, y) respetivaly.
             **kwargs: {"id": , "width": , "height": , "x": , "y": }
         """
-        if len(args) != 0:
-            if len(args) >= 1:
-                if args[0] is not None and type(args[0]) != int:
-                    raise TypeError("id must be an integer")
-                self.id = args[0]
-            if len(args) >= 2:
-                self.width = args[1]
-            if len(args) >= 3:
-                self.height = args[2]
-            if len(args) >= 4:
-                self.x = args[3]
-            if len(args) >= 5:
-                self.y = args[4]
-        else:
+        data = ["id", "width", "height", "x", "y"]
+        for key, value in enumerate(args):
+            setattr(self, data[key], value)
+        if not args:
             for key, value in kwargs.items():
-                if key == "id":
-                    if value is not None and type(value) != int:
-                        raise TypeError("id must be an integer")
-                    self.id = value
-                elif key == "width":
-                    self.width = value
-                elif key == "height":
-                    self.height = value
-                elif key == "x":
-                    self.x = value
-                elif key == "y":
-                    self.y = value
+                if key in data:
+                    setattr(self, key, value)
 
     def to_dictionary(self):
         """Returns the dictionary representation of the object"""
