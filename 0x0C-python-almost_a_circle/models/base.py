@@ -2,6 +2,7 @@
 """ Base Module """
 import json
 import os.path as path
+import csv
 
 
 class Base:
@@ -34,19 +35,25 @@ class Base:
         Raises:
             TypeError: list_dictionaries must be a list of dictionaries
         """
-        if list_dictionaries in [[], None]:
+        if list_dictionaries in [None, []]:
             return "[]"
-        if type(list_dictionaries) != list or not all(type(d) == dict for d in list_dictionaries):
+        if (type(list_dictionaries) != list or
+           not all(type(d) == dict for d in list_dictionaries)):
             raise TypeError("list_dictionaries must be a list of dictionaries")
         return json.dumps(list_dictionaries)
 
     @staticmethod
     def from_json_string(json_string):
         """Returns the list of the JSON string representation
-        Parameters: json_string
+        Parameters:
+            json_string: string info JSON format
+        Raises:
+            TypeError: json_string must be a string
         """
-        if json_string is None or json_string == "":
+        if json_string in [None, ""]:
             return []
+        elif type(json_string) != str:
+            raise TypeError("json_string must be a string")
         else:
             return json.loads(json_string)
 
@@ -58,7 +65,7 @@ class Base:
             cls: class instance
             list_object: list of object of type(cls)
         """
-        if list_objs is None or list_objs == []:
+        if list_objs in [None, []]:
             data = "[]"
         else:
             data = cls.to_json_string(
@@ -80,13 +87,44 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        filename = cls.__name__ + ".json"
+        """Read a JSON file and return a list of istances(objects)
+        Parameters:
+            cls: class type
+        """
         objs = []
-        dict_list = []
+        filename = cls.__name__ + ".json"
         if path.exists(filename):
+            dict_list = []
             with open(filename, 'r') as file:
                 dict_list = cls.from_json_string(file.read())
                 for dictionary in dict_list:
                     objs.append(cls.create(**dictionary))
                 file.close()
         return objs
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Writes the CSV string representation of list_objs
+        to a file
+        Parameters:
+            cls: class instance
+            list_object: list of object of type(cls)
+        """
+        if list_objs in [None, []]:
+            data = "[]"
+        elif (type(list_objs) != list or
+                not all(isinstance(obj, cls) for obj in list_objs)):
+            raise TypeError("list_objs must be a list of ")
+        else:
+            pass
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w') as file:
+            pass
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Read a CSV file and return a list of istances(objects)
+        Parameters:
+            cls: class type
+        """
+        pass
