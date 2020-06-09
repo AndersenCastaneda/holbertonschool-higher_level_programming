@@ -58,6 +58,20 @@ class Base:
             return json.loads(json_string)
 
     @classmethod
+    def create(cls, **dictionary):
+        """Returns an instance with all attributes already set
+        Parameters:
+            cls: class instance
+            **dictionary: class info ((width, height) or size, x, y, id)
+        """
+        if cls.__name__ == "Rectangle":
+            obj = cls(1, 1)
+        elif cls.__name__ == "Square":
+            obj = cls(1)
+        obj.update(**dictionary)
+        return obj
+
+    @classmethod
     def save_to_file(cls, list_objs):
         """Writes the JSON string representation of list_objs
         to a file
@@ -73,20 +87,6 @@ class Base:
         filename = cls.__name__ + ".json"
         with open(filename, 'w') as file:
             file.write(data)
-
-    @classmethod
-    def create(cls, **dictionary):
-        """Returns an instance with all attributes already set
-        Parameters:
-            cls: class instance
-            **dictionary: class info ((width, height) or size, x, y, id)
-        """
-        if cls.__name__ == "Rectangle":
-            obj = cls(1, 1)
-        elif cls.__name__ == "Square":
-            obj = cls(1)
-        obj.update(**dictionary)
-        return obj
 
     @classmethod
     def load_from_file(cls):
@@ -117,17 +117,39 @@ class Base:
             data = "[]"
         elif (type(list_objs) != list or
                 not all(isinstance(obj, cls) for obj in list_objs)):
-            raise TypeError("list_objs must be a list of ")
-        else:
-            pass
+            raise TypeError("list_objs must be a list of objects")
+        lobj = [obj.to_dictionary() for obj in list_objs]
         filename = cls.__name__ + ".csv"
         with open(filename, 'w') as file:
-            pass
+            if cls.__name__ == "Rectangle":
+                fields = ["id", "width", "height", "x", "y"]
+            elif cls.__name__ == "Square":
+                fields = ["id", "size", "x", "y"]
+            writer = csv.DictWriter(file, fields)
+            writer.writeheader()
+            writer.writerows(lobj)
 
     @classmethod
     def load_from_file_csv(cls):
         """Read a CSV file and return a list of istances(objects)
         Parameters:
             cls: class type
+        Return: List of objects
         """
-        pass
+        objs = []
+        filename = cls.__name__ + ".csv"
+        if path.exists(filename):
+            with open(filename, 'r') as file:
+                dict_list = csv.reader(file)
+                if cls.__name__ == "Rectangle":
+                    fields = ["id", "width", "height", "x", "y"]
+                elif cls.__name__ == "Square":
+                    fields = ["id", "size", "x", "y"]
+                for key, value in enumerate(dict_list):
+                    if key > 0:
+                        obj = cls(1, 1)
+                        for k, v in enumerate(value):
+                            setattr(obj, fields[k], int(v))
+                        objs.append(obj)
+                file.close()
+        return objs
