@@ -72,7 +72,7 @@ class Base:
         """Returns an instance with all attributes already set
         Parameters:
             cls: class instance
-            **dictionary: class info
+            **dictionary: class info ((width, height) or size, x, y, id)
         """
         obj = cls(1, 1)
         obj.update(**dictionary)
