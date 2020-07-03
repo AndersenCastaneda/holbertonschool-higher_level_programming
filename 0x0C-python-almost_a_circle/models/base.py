@@ -79,6 +79,7 @@ class Base:
             cls: class instance
             list_object: list of object of type(cls)
         """
+        #data = ""
         if list_objs in [None, []]:
             data = "[]"
         else:
