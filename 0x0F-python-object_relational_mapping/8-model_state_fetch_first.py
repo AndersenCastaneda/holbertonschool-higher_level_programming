@@ -22,6 +22,6 @@ if __name__ == "__main__":
         if first == []:
             print("Nothing")
         else:
-            print('{}: {}'.format(query.all()[0].id, query.all()[0].name))
+            print('{}: {}'.format(first.id, first.name))
 
         session.close()
