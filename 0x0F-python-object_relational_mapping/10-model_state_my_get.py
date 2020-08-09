@@ -20,7 +20,7 @@ if __name__ == "__main__":
         Session = sessionmaker(bind=engine)
         session = Session()
         element = session.query(State).filter(State.name == argv[4]).first()
-        if element == None:
+        if element is None:
             print("Not found")
         else:
             print('{}'.format(element.id))
