@@ -20,3 +20,5 @@ if __name__ == "__main__":
         query = session.query(State).filter(State.id).order_by(State.id)
         for row in query.all():
             print('{}: {}'.format(row.id, row.name))
+
+        session.close()
