@@ -19,7 +19,7 @@ if __name__ == "__main__":
         session = Session()
         first = session.query(State).first()
 
-        if first == []:
+        if first is None:
             print("Nothing")
         else:
             print('{}: {}'.format(first.id, first.name))
