@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""adds the State object “Louisiana” to the database hbtn_0e_6_usa
+"""Changes the name of a State object from the database hbtn_0e_6_usa
 """
 
 
