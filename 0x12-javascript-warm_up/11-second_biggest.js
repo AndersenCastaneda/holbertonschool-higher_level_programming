@@ -1,8 +1,9 @@
 #!/usr/bin/node
-const argc = process.argv.length;
-if (argc < 4) {
-  console.log(0);
-} else {
-  const arr = process.argv.slice(2).sort();
-  console.log(arr[argc - 4]);
+'use strict';
+let secBig = 0;
+let argv = process.argv.slice(2);
+if (argv.length > 1) {
+  argv.sort();
+  secBig = argv[argv.length - 2];
 }
+console.log(secBig);
