@@ -1,9 +1,8 @@
 #!/usr/bin/node
 const argv = process.argv.slice(2);
-const length = argv.length;
-if (length === 0 || length === 1) {
+if (argv.length === 0 || argv.length === 1) {
   console.log(0);
 } else {
-  let arr = argv.sort();
-  console.log(arr[length - 2]);
+  const arr = argv.sort();
+  console.log(arr[argv.length - 2]);
 }
