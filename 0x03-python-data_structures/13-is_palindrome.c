@@ -1,42 +1,52 @@
 #include "lists.h"
 
 /**
- * is_palindrome - Checks if a singly linked list is a palindrome
- * @head: listint_t linked list head
- * Return: 1 if it is a palindrome, otherwise 0
+ * compare_head_tail - recursive function that find the end of
+ * a single linked list and then compares head/tail
+ * @curr_tail: pointer towards tail
+ * @head: permanent reference to head
+ * Return: a pointer towards head or NULL if head/tail are diferent
+ */
+listint_t *compare_nodes(listint_t *tail, listint_t *head)
+{
+	listint_t *curr_head;
+
+	if (tail == NULL)
+		return (head);
+
+	curr_head = compare_nodes(tail->next, head);
+
+	if (curr_head == NULL)
+		return (NULL);
+
+	if (curr_head->n == tail->n)
+	{
+		if (curr_head->next == NULL)
+			return (head); /* end of comparations */
+		else
+			return (curr_head->next);
+	}
+	else
+		return (NULL);
+}
+
+/**
+ * is_palindrome - checks if a singly linked list is a palindrome
+ * @head: head of the linked list
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome
+ * An empty list is considered a palindrome
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *hd = *head;
-	int i = 0, j = 0, flag = 1, *nums = NULL;
+	listint_t *result;
 
-	if (!hd || !hd->next)
-		return (flag);
+	if (!(*head) || !(*head)->next)
+		return (1);
 
-	for (j = 0; hd; j++)
-		hd = hd->next;
+	result = compare_nodes(*head, *head);
 
-	nums = malloc(j * 4);
-	if (!nums)
-		return (0);
-	hd = *head;
+	if (result)
+		return (1);
 
-	for (i = 0; hd; i++)
-	{
-		nums[i] = hd->n;
-		hd = hd->next;
-	}
-
-	j -= 1;
-	for (i = 0; i <= j; i++, j--)
-	{
-		if (nums[i] != nums[j])
-		{
-			flag = 0;
-			break;
-		}
-	}
-
-	free(nums);
-	return (flag);
+	return (0);
 }
