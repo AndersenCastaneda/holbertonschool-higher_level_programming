@@ -17,6 +17,8 @@ int is_palindrome(listint_t **head)
 		hd = hd->next;
 
 	nums = malloc(j * 4);
+	if (!nums)
+		return (0);
 	hd = *head;
 
 	for (i = 0; hd; i++)
