@@ -5,6 +5,9 @@ const request = require('request');
 const url = process.argv[2];
 const userTasksCompleted = {};
 
+if (!url)
+	return;
+
 request(url, function taskCompleted (err, response, body) {
   if (!err) {
     const json = JSON.parse(body);
