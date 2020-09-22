@@ -1,13 +1,9 @@
 #!/usr/bin/node
-const url = process.argv.slice(2)[0];
+// Displays the status code of a GET request.
+
 const request = require('request');
-if (url !== undefined) {
-  request
-    .get(url)
-    .on('error', function (err) {
-      console.error(err);
-    })
-    .on('response', function (response) {
-      console.log(response.statusCode);
-    });
-}
+const url = process.argv[2];
+
+request(url, function getUrl (err, response) {
+  console.log((!err) ? `code: ${response.statusCode}` : err);
+});

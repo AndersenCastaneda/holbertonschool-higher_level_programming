@@ -68,35 +68,6 @@ Write a script that computes the number of tasks completed by user id.
   - You must use the module request
 
 
-<!-- ### [7. Who was playing in this movie?](./100-starwars_characters.js)
-Write a script that prints all characters of a Star Wars movie:
-  - The first argument is the Movie ID - example: 3 = “Return of the Jedi”
-  - Display one character name by line
-  - You must use the Star wars API
-  - You must use the module request
-
-
-### [8. Right order](./101-starwars_characters.js)
-Write a script that prints all characters of a Star Wars movie:
-  - The first argument is the Movie ID - example: 3 = “Return of the Jedi”
-  - Display one character name by line in the same order of the list “characters” in the /films/ response
-  - You must use the Star wars API
-  - You must use the module request
-
-
-### [9. Twitter Auth](./102-search_twitter.js)
-Write a Javascript script that takes in 3 strings and sends a search request to the Twitter API
-  - Use the Twitter API search endpoint
-  - Use the Application-only authentication flow to do a search request
-  - Create an Twitter application here
-  - The first argument must be the Consumer Key (API Key)
-  - The second argument must be the Consumer Secret (API Secret)
-  - The third argument must be the search string
-  - Display only 5 results in the following format: [<Tweet ID>] <Tweet text> by <Tweet owner name> (see example below)
-  - Only these modules are allowed: request, base-64 and utf8
-  - You don’t need to check arguments passed to the script (number or type) -->
-
-
 ---
 
 ## Author
