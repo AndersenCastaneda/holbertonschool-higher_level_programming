@@ -1,4 +1,4 @@
-# 0x15. API
+# 0x13. Javascript Objects Scopes Closures
 
 ## Resources:books:
 Read or watch:
