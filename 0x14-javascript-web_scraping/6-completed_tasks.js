@@ -10,11 +10,12 @@ if (url) {
     if (!err) {
       const json = JSON.parse(body);
       for (const task of json) {
-        if (!(task.userId in userTasksCompleted)) {
-          userTasksCompleted[task.userId] = 0;
-        }
         if (task.completed === true) {
-          ++userTasksCompleted[task.userId];
+          if (!(task.userId in userTasksCompleted)) {
+            userTasksCompleted[task.userId] = 1;
+          } else {
+            userTasksCompleted[task.userId]++;
+          }
         }
       }
       console.log(userTasksCompleted);
