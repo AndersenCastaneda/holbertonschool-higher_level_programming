@@ -15,6 +15,6 @@ request(url, function getTitle (err, response, body) {
         numberOfMovies++;
       }
     }
+    console.log(numberOfMovies);
   }
-  console.log(numberOfMovies);
 });
