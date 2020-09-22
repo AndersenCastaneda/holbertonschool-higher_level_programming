@@ -3,7 +3,6 @@
 
 const request = require('request');
 const url = process.argv[2];
-let numberOfMovies = 0;
 const id = 'https://swapi-api.hbtn.io/api/people/18';
 
 if (url) {
