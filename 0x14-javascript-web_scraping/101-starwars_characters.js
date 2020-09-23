@@ -6,7 +6,7 @@ const movieID = process.argv[2];
 
 if (movieID) {
   const url = `https://swapi-api.hbtn.io/api/films/${movieID}`;
-  request(url, function taskCompleted(err, response, body) {
+  request(url, function taskCompleted (err, response, body) {
     if (!err) {
       const characters = JSON.parse(body).characters;
       const list = [];
@@ -18,8 +18,7 @@ if (movieID) {
             }
             const names = JSON.parse(body).name;
             resolve(names);
-          }
-        )));
+          })));
       }
       Promise.all(list).then((names) => names.forEach((name) => console.log(name)));
     }
